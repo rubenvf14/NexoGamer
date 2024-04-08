@@ -21,5 +21,6 @@ from webserviceapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios', views.devolver_usuarios),
-    path('juegos', views.devolver_juegos)
+    path('juegos', views.devolver_juegos),
+    path('plataformasJuegos', views.devolver_plataformasJuegos_PorNombre),
 ]
