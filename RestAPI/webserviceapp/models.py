@@ -37,6 +37,7 @@ class Juegos(models.Model):
     urlimagen = models.CharField(db_column='urlImagen', max_length=200, blank=True, null=True)  # Field name made lowercase.
     compañia = models.CharField(max_length=1000, blank=True, null=True)
     valoracion = models.IntegerField(blank=True, null=True)
+    alias = models.CharField(max_length=50, blank=True, null=True)
     comentarioid = models.ForeignKey(Comentariosjuegos, models.DO_NOTHING, db_column='comentarioId', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
