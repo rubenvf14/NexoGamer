@@ -27,4 +27,6 @@ urlpatterns = [
     path('juegosNombre', views.devolver_juegos_PorNombre),
     path('juegosAño', views.devolver_juegos_PorAño),
     path('favoritos/<int:usuario_id>', views.devolver_juegos_favoritos),
+    path('register', views.register),
+    path('del_user/<int:usuario_id>', views.del_user),
 ]

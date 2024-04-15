@@ -276,3 +276,57 @@ def devolver_juegos_favoritos(request, usuario_id):
 
     # Si el método no es GET, devuelve un error de método no permitido
     return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+@csrf_exempt
+def register(request):
+	if request.method == 'POST':
+		try:
+			data = json.loads(request.body.decode('utf-8'))
+			usuario=Users()
+			usuario.nombre=data['nombre']
+			usuario.apellidos=data['apellidos']
+			usuario.contraseña=data['contraseña']
+			usuario.telefono=data['telefono']
+			usuario.email=data['email']
+
+            		# Verificar si los campos requeridos están presentes en los datos recibidos
+			required_fields = ['nombre', 'apellidos', 'contraseña', 'telefono', 'email']
+			for field in required_fields:
+				if field not in data:
+					return JsonResponse({'error': 'Faltan parámetros en la solicitud'}, status=400)
+
+            # Verificar si ya existe un usuario con el mismo nombre o email
+			if Users.objects.filter(nombre=data['nombre']).exists() or Users.objects.filter(email=data['email']).exists():
+				return JsonResponse({'error': 'Ya existe un usuario con ese nombre o email'}, status=409)
+
+
+            # Crear el nuevo usuario
+			new_user = Users(
+				nombre=data['nombre'],
+                apellidos=data['apellidos'],
+				contraseña=data['contraseña'],
+				telefono=data['telefono'],
+				email=data['email'],
+			)
+			new_user.save()
+			return JsonResponse({'message': 'Usuario registrado exitosamente'}, status=201)
+		except Exception as e:
+			return JsonResponse({'error':str(e)}, status=400)
+
+@csrf_exempt
+def del_user(request, usuario_id):
+    if request.method == 'DELETE':
+        try:
+            # Verificar si el usuario existe
+            usuario = Users.objects.get(id=usuario_id)
+            
+            # Eliminar el usuario
+            usuario.delete()
+            
+            return JsonResponse({'message': 'Usuario eliminado exitosamente'}, status=200)
+        except Users.DoesNotExist:
+            return JsonResponse({'error': 'El usuario no existe'}, status=404)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)

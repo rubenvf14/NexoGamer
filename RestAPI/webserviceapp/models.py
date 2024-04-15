@@ -6,7 +6,8 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import check_password
 
 class Comentariosjuegos(models.Model):
     comentario = models.CharField(max_length=500, blank=True, null=True)
@@ -63,6 +64,13 @@ class Users(models.Model):
     juegofavoritoid = models.ForeignKey(Favoritos, models.DO_NOTHING, db_column='juegoFavoritoId', blank=True, null=True)  # Field name made lowercase.
     comentariojuegoid = models.ForeignKey(Comentariosjuegos, models.DO_NOTHING, db_column='comentarioJuegoId', blank=True, null=True)  # Field name made lowercase.
     sessiontoken = models.CharField(db_column='sessionToken', max_length=500, blank=True, null=True)  # Field name made lowercase.
+
+    def save(self, *args, **kwargs):
+        if  not self.pk:  # Si la instancia ya existe en la base de datos
+                      
+           self.contraseña = make_password(self.contraseña)
+        
+        super(Users, self).save(*args, **kwargs)
 
     class Meta:
         managed = False
