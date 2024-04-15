@@ -32,7 +32,7 @@ CREATE TABLE `comentariosJuegos` (
   KEY `userId` (`userId`),
   CONSTRAINT `comentariosJuegos_ibfk_1` FOREIGN KEY (`juegoId`) REFERENCES `juegos` (`id`),
   CONSTRAINT `comentariosJuegos_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,8 @@ INSERT INTO `comentariosJuegos` VALUES
 (7,'Ladron promedio = ekko',7,7),
 (8,'Tipos caendo',8,8),
 (9,'Terceiras sombras mas oscuras',9,9),
-(10,'O mare dos piratas',10,10);
+(10,'O mare dos piratas',10,10),
+(11,'É un xogazo',11,1);
 /*!40000 ALTER TABLE `comentariosJuegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +73,7 @@ CREATE TABLE `favoritos` (
   KEY `userId` (`userId`),
   CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`juegoId`) REFERENCES `juegos` (`id`),
   CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,8 +93,7 @@ INSERT INTO `favoritos` VALUES
 (8,8,8,1),
 (9,9,9,1),
 (10,10,10,1),
-(11,NULL,1,0),
-(12,1,NULL,0);
+(11,11,1,1);
 /*!40000 ALTER TABLE `favoritos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +119,7 @@ CREATE TABLE `juegos` (
   PRIMARY KEY (`id`),
   KEY `comentarioId` (`comentarioId`),
   CONSTRAINT `juegos_ibfk_1` FOREIGN KEY (`comentarioId`) REFERENCES `comentariosJuegos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,8 @@ INSERT INTO `juegos` VALUES
 (7,'Grand Theft Auto V','Acción/Aventura',2013,'Playstation 4/Playstation 5/Playstation 3/Xbox 360/Xbox One/Xbox Series X y Series S/Ordenador','Grand Theft Auto V (GTA V) es un juego de acción y aventura desarrollado por Rockstar Games. Ambientado en la ficticia ciudad de Los Santos y sus alrededores, los jugadores asumen el papel de tres protagonistas: Michael, Franklin y Trevor, quienes se involucran en una serie de actividades criminales mientras navegan por el mundo del crimen organizado, la corrupción y la traición. Con su vasto mundo abierto, repleto de misiones, actividades secundarias y un modo multijugador robusto, GTA V ofrece una experiencia de juego dinámica y llena de acción. Desde su lanzamiento en 2013, ha sido uno de los juegos más exitosos y aclamados por la crítica de todos los tiempos.','https://assetsio.gnwcdn.com/eurogamer-zjp1vx.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp','Rockstar Games',9,'gta5',7),
 (8,'Fall Guys','Battle Royale',2020,'Nintendo Switch/PlayStation 5/PlayStation 4/Ordenador/Xbox Series X y Series S','Fall Guys: Ultimate Knockout es un juego de tipo battle royale desarrollado por Mediatonic. En él, hasta 60 jugadores controlan adorables personajes llamados \"Fall Guys\" en una serie de desafiantes pruebas y obstáculos en una competencia estilo juego de televisión. Los jugadores deben superar diversos obstáculos, competir en mini-juegos y evitar caer en eliminaciones hasta que solo quede un ganador. Con su diseño colorido, mecánicas simples pero divertidas, y la emoción de la competencia multijugador, Fall Guys ha ganado popularidad como un juego socialmente divertido y accesible para jugadores de todas las edades.','https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/2x1_NSwitchDS_FallGuys_image1600w.jpg','Mediatonic',10,'',8),
 (9,'Dark Souls III','Rol',2016,'Xbox One/Playstation 4/Ordenador','Dark Souls 3 es un desafiante juego de rol de acción desarrollado por FromSoftware. Situado en un oscuro y desolado mundo de fantasía, los jugadores asumen el papel de un no muerto que se aventura a través de peligrosas tierras en busca de la salvación. Con combates intensos y estratégicos, un mundo interconectado lleno de secretos y una atmósfera opresiva, Dark Souls 3 ofrece una experiencia inmersiva y desafiante. La habilidad del jugador para aprender y adaptarse es fundamental para sobrevivir en este mundo brutal y hostil. Desde su lanzamiento, ha sido elogiado por su diseño de niveles ingenioso, su jugabilidad satisfactoria y su narrativa ambiental profunda.','https://static.bandainamcoent.eu/high/dark-souls/dark-souls-3/00-page-setup/ds3_game-thumbnail.jpg','FromSoftware',9,'',9),
-(10,'Sea of Thieves','Acción/Aventuras',2018,'PlayStation 5/Xbox One/Xbox Series X y Series S/Ordenador','Sea of Thieves es un juego de aventuras en línea desarrollado por Rare Ltd. En él, los jugadores asumen el papel de piratas que navegan por un vasto mundo abierto lleno de islas exóticas, tesoros ocultos y peligrosos enemigos. Ya sea explorando islas misteriosas, enfrentándose a otros jugadores en batallas navales o buscando tesoros enterrados, la cooperación en equipo y la comunicación son clave para el éxito. Con su estilo visual único y su enfoque en la libertad de juego, Sea of Thieves ofrece una experiencia de piratería llena de diversión y aventura para jugadores de todas las edades.','https://xxboxnews.blob.core.windows.net/prod/sites/2/2023/12/Wire_SoT_SeasonTen_DecKeyArt_1920-1c2858eaa9526cae0631.jpg','Rare',9,'',10);
+(10,'Sea of Thieves','Acción/Aventuras',2018,'PlayStation 5/Xbox One/Xbox Series X y Series S/Ordenador','Sea of Thieves es un juego de aventuras en línea desarrollado por Rare Ltd. En él, los jugadores asumen el papel de piratas que navegan por un vasto mundo abierto lleno de islas exóticas, tesoros ocultos y peligrosos enemigos. Ya sea explorando islas misteriosas, enfrentándose a otros jugadores en batallas navales o buscando tesoros enterrados, la cooperación en equipo y la comunicación son clave para el éxito. Con su estilo visual único y su enfoque en la libertad de juego, Sea of Thieves ofrece una experiencia de piratería llena de diversión y aventura para jugadores de todas las edades.','https://xxboxnews.blob.core.windows.net/prod/sites/2/2023/12/Wire_SoT_SeasonTen_DecKeyArt_1920-1c2858eaa9526cae0631.jpg','Rare',9,'',10),
+(11,'Dead by Daylight','Survival horror',2016,'Ordenador/Playstation 5/Playstation 4/Nintendo Switch','Dead by Daylight es un videojuego de terror multijugador asimétrico en el que cuatro jugadores controlan a supervivientes y deben escapar de un asesino, mientras que un jugador asume el papel del asesino y trata de capturar y sacrificar a los supervivientes. Los supervivientes deben completar una serie de generadores para abrir las puertas de escape, mientras evitan ser capturados y sacrificados por el asesino en un entorno oscuro y peligroso. Con una atmósfera tensa y emocionante, \"Dead by Daylight\" ofrece una experiencia de juego única y llena de adrenalina tanto para los jugadores de supervivientes como para el asesino.','https://cdn1.epicgames.com/offer/611482b8586142cda48a0786eb8a127c/EGS_DeadbyDaylight_BehaviourInteractive_S1_2560x1440-a32581cf9948a9a2e24b2ff15c1577c7','Behaviour Interactive',7,'dbd',11);
 /*!40000 ALTER TABLE `juegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +157,7 @@ CREATE TABLE `plataformasJuegos` (
   PRIMARY KEY (`id`),
   KEY `juegoId` (`juegoId`),
   CONSTRAINT `plataformasJuegos_ibfk_1` FOREIGN KEY (`juegoId`) REFERENCES `juegos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,17 +166,6 @@ CREATE TABLE `plataformasJuegos` (
 
 LOCK TABLES `plataformasJuegos` WRITE;
 /*!40000 ALTER TABLE `plataformasJuegos` DISABLE KEYS */;
-INSERT INTO `plataformasJuegos` VALUES
-(1,'Indie',1),
-(2,'Indie',2),
-(3,'Steam',3),
-(4,'Level-5',4),
-(5,'Steam',5),
-(6,'Rockstar Games',6),
-(7,'Rockstar Games',7),
-(8,'Epic Games',8),
-(9,'Steam',9),
-(10,'Steam',10);
 /*!40000 ALTER TABLE `plataformasJuegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,10 +187,8 @@ CREATE TABLE `users` (
   `comentarioJuegoId` int(11) DEFAULT NULL,
   `sessionToken` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `juegoFavoritoId` (`juegoFavoritoId`),
   KEY `comentarioJuegoId` (`comentarioJuegoId`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`juegoFavoritoId`) REFERENCES `favoritos` (`id`),
-  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`comentarioJuegoId`) REFERENCES `comentariosJuegos` (`id`)
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`comentarioJuegoId`) REFERENCES `comentariosJuegos` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -233,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-09 12:27:01
+-- Dump completed on 2024-04-15 12:16:44
